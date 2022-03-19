@@ -1,4 +1,3 @@
-set number							" Show line number
 syntax on							" Highlight syntax
 set mouse=r							" Enable mouse click, + enable to copy paste without taking line number
 set cursorline						" Enables cursor line position tracking
@@ -14,9 +13,20 @@ set autoindent						" auto indent file on save
 set modeline				" make vim change in a specific file
 set modelines=5
 set backspace=indent,eol,start
+set number
 call plug#begin()
   Plug 'preservim/nerdtree'
+  Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 call plug#end()
+execute pathogen#infect()
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
