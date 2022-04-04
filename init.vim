@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
    Plug 'sheerun/vim-polyglot'
    Plug '42Paris/42header'
    Plug 'vim-syntastic/syntastic'
+   Plug 'vim-scripts/vim-auto-save'
 
 call plug#end()
 " Space duck settings
@@ -25,7 +26,7 @@ let g:user42 = "yakhoudr"
 let g:mail42 = "yakhoudr@student.1337.ma"
 " Nerd tree toggle
 let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArroCollapsible = '▾'
 nnoremap <C-t> :NERDTreeToggle<CR>
 " Coc settings
 nmap <silent> gd <Plug>(coc-definition)
@@ -49,3 +50,4 @@ let g:coc_global_extensions = [
   \  'coc-prettier'
   \ ]
 
+" AutoSaveTogglew
