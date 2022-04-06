@@ -1,3 +1,4 @@
+let g:coc_node_path = '/snap/bin/node'
 call plug#begin('~/.vim/plugged')
    Plug 'preservim/nerdtree'
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -6,16 +7,19 @@ call plug#begin('~/.vim/plugged')
    Plug '42Paris/42header'
    Plug 'vim-syntastic/syntastic'
    Plug 'vim-scripts/vim-auto-save'
+   Plug 'frazrepo/vim-rainbow'
+   Plug 'altercation/vim-colors-solarized'
+   Plug 'itchyny/lightline.vim'
+   Plug 'preservim/nerdcommenter'
+   Plug 'tpope/vim-surround'
+   Plug 'tpope/vim-fugitive'
 
 call plug#end()
 " Space duck settings
-if exists('+termguicolors')
-      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-      set termguicolors
-    endif
-
-   colorscheme spaceduck
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 " General settings
 set number
 syntax on
@@ -51,3 +55,45 @@ let g:coc_global_extensions = [
   \ ]
 
 " AutoSaveTogglew
+" rainbox brackets
+au FileType c,cpp,objc,objcpp,cs,java,js call rainbow#load()
+if !has('gui_running')
+  set t_Co=256
+endif
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+filetype plugin on
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
