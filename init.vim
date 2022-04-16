@@ -1,4 +1,4 @@
-let g:coc_node_path = '/snap/bin/node'
+let g:coc_node_path = '/usr/local/bin/node'
 call plug#begin('~/.vim/plugged')
    Plug 'preservim/nerdtree'
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -97,3 +97,5 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+" Autosave
+autocmd TextChanged,TextChangedI <buffer> silent write
