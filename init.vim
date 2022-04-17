@@ -1,4 +1,5 @@
 let g:coc_node_path = '/usr/local/bin/node'
+set clipboard+=unnamedplus
 call plug#begin('~/.vim/plugged')
    Plug 'preservim/nerdtree'
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -17,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 " Space duck settings
 syntax enable
+let g:coc_node_path="/usr/bin/node"
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
