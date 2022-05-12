@@ -18,8 +18,8 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 " Space duck settings
 syntax enable
-let g:coc_node_path="/usr/bin/node"
 set background=dark
+nmap <F8> :TagbarToggle<CR>
 let g:solarized_termcolors=256
 colorscheme solarized
 " General settings
@@ -100,4 +100,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 " Autosave
-autocmd TextChanged,TextChangedI <buffer> silent write
+autocmd TextChanged,TextChangedI *
+    \ if &buftype ==# '' || &buftype == 'acwrite' |
+    \     silent write |
+    \ endif
